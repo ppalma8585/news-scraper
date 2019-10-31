@@ -4,18 +4,18 @@ $.getJSON("/articles", function(data) {
     for (var i = 0; i < data.length; i++) {
       // Display the apropos information on the page
       $("#articles").append("<img src='" + data[i].photo + "'>")
+    
    
       $("#articles").append("<h4 data-id='" + data[i]._id + "'>" + data[i].title  + "</h4>");
-      $("#articles").append("<a href='" + data[i].link + "'>" + "See it here" + "</a>");
+      $("#articles").append("<a class='btn btn-dark' href='" + data[i].link + "'>" + "See it here" + "</a>");
+      $("#articles").append("<button id='saveBtn' class='btn btn-primary'='" + data[i]._id + "'>" + "Save it!" + "</button>");
       $("#articles").append("<p data-id='" + data[i]._id + "'>" + "<br />" + data[i].description + "<p>");
-   
-     
-     
-   
     }
   });
   
-  
+
+
+
   // Whenever someone clicks a p tag
   $(document).on("click", "p", function() {
     // Empty the notes from the note section
@@ -74,6 +74,10 @@ $.getJSON("/articles", function(data) {
         $("#notes").empty();
       });
   
+      $(document).on("click", ".btn-primary", function() {
+          alert('hi')
+          });
+      
     // Also, remove the values entered in the input and textarea for note entry
     $("#titleinput").val("");
     $("#bodyinput").val("");
